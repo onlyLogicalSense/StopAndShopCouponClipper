@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Stop & Shop Clipper",
+  "version": "1.1",
+  "description": "Automatically clip all coupons on Stop & Shop",
+  "permissions": ["scripting", "storage"],
+  "host_permissions": [
+    "https://stopandshop.com/*",
+    "https://www.stopandshop.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stopandshop.com/*",
+        "https://www.stopandshop.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
